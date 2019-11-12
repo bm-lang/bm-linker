@@ -4,7 +4,9 @@ import bm.linker.source.SContainer;
 import bm.linker.source.SMember;
 import bm.linker.source.members.SClass;
 import bm.linker.target.TMember;
+import bm.linker.target.TMemberList;
 import bm.linker.target.TOrigin;
+import bm.linker.target.TProgram;
 
 import java.io.Closeable;
 import java.io.IOException;
@@ -16,11 +18,15 @@ import java.util.function.Function;
 public class LinkContext {
 
   private final Stack<SContainer> containers;
-  private final ArrayList<TMember> members;
+  private final TMemberList members;
 
   public LinkContext() {
     containers = new Stack<>();
-    members = new ArrayList<>();
+    members = new TMemberList();
+  }
+
+  public TProgram toProgram() {
+    return new TProgram(members);
   }
 
   public List<TMember> getMembers() {

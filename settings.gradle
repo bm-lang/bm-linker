@@ -1,2 +1,13 @@
 rootProject.name = 'bm-linker'
 
+sourceControl {
+    gitRepository("https://github.com/bm-lang/bm-parser.git") {
+        producesModule("bm:bm-parser")
+    }
+    gitRepository("https://github.com/gramat-lang/jgramat.git") {
+        producesModule("gramat:jgramat")
+    }
+    gitRepository("https://github.com/bakasoft/json.git") {
+        producesModule("bakasoft:json")
+    }
+}

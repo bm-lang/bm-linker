@@ -7,19 +7,19 @@ import bm.linker.target.TType;
 
 public class TField extends TMember {
 
-  private TType type;
+  private TType dataType;
   private TExpression initialValue;
 
   public TField(TOrigin origin) {
     super(origin);
   }
 
-  public void setType(TType type) {
-    this.type = type;
+  public void setDataType(TType dataType) {
+    this.dataType = dataType;
   }
 
-  public TType getType() {
-    return type;
+  public TType getDataType() {
+    return dataType;
   }
 
   public void setInitialValue(TExpression initialValue) {

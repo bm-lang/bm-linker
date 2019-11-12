@@ -6,7 +6,6 @@ import bm.linker.source.SModule;
 import bm.linker.source.expressions.SNull;
 import bm.linker.source.members.SClass;
 import bm.linker.source.members.SField;
-import bm.linker.target.TMember;
 import bm.linker.target.expressions.TNull;
 import bm.linker.target.members.TField;
 import bm.linker.target.types.TClass;
@@ -31,7 +30,7 @@ public class Case1 {
     sScope2.add(sClassT);
 
     sFieldX.initialValue = new SNull();
-    sFieldX.type = new SMemberRef("T");
+    sFieldX.dataType = new SMemberRef("T");
 
     LinkContext context = new LinkContext();
 
@@ -41,12 +40,12 @@ public class Case1 {
     TClass tClassT = (TClass)context.getMembers().get(1);
 
     assert tFieldX.getOrigin().getMember() == sFieldX;
-    assert tFieldX.getOrigin().getPath()[0] == sRootModule;
+    assert tFieldX.getOrigin().getTraceback()[0] == sRootModule;
     assert tFieldX.getInitialValue() instanceof TNull;
-    assert tFieldX.getType() == tClassT;
+    assert tFieldX.getDataType() == tClassT;
 
     assert tClassT.getOrigin().getMember() == sClassT;
-    assert tClassT.getOrigin().getPath()[0] == sRootModule;
+    assert tClassT.getOrigin().getTraceback()[0] == sRootModule;
   }
 
 }

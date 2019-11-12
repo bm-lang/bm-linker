@@ -4,6 +4,7 @@ import bm.linker.LinkContext;
 import bm.linker.source.SExpression;
 import bm.linker.source.SMember;
 import bm.linker.source.SMemberRef;
+import bm.linker.target.TType;
 import bm.linker.target.members.TField;
 
 public class SField implements SMember {
@@ -13,7 +14,7 @@ public class SField implements SMember {
   public final String name;
   public boolean isVariable;
   public SExpression initialValue;
-  public SMemberRef type;
+  public SMemberRef dataType;
 
   public SField(String name) {
     this.name = name;
@@ -35,8 +36,8 @@ public class SField implements SMember {
       linkedField.setInitialValue(this.initialValue.link(context));
     }
 
-    if (this.type != null) {
-      linkedField.setType(this.type.link(context).toType());
+    if (this.dataType != null) {
+      linkedField.setDataType(this.dataType.link(context).cast(TType.class));
     }
 
     return linkedField;

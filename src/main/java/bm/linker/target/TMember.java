@@ -1,6 +1,7 @@
 package bm.linker.target;
 
 import bm.linker.LinkerException;
+import bm.linker.target.members.TField;
 
 public class TMember {
 
@@ -14,12 +15,12 @@ public class TMember {
     return origin;
   }
 
-  public TType toType() {
-    if (!(this instanceof TType)) {
+  public <T> T cast(Class<T> type) {
+    if (!type.isInstance(this)) {
       throw new LinkerException();
     }
 
-    return (TType)this;
+    return type.cast(this);
   }
 
 }

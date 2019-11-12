@@ -2,15 +2,18 @@ plugins {
     id 'java'
 }
 
-group 'bm-linker'
+group 'bm'
 version '0.0.1'
 
-sourceCompatibility = 1.8
+sourceCompatibility = JavaVersion.VERSION_1_10
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    implementation "gramat:jgramat:0.1.2"
+    implementation "bakasoft:json:0.1.1"
+    implementation "bm:bm-parser:0.0.8"
+    testImplementation "junit:junit:4.12"
 }
